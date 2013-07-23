@@ -19,11 +19,16 @@ git clone https://github.com/litesystems/itcdownloader.git
 cd itcdownloader
 ```
 3. Put Autoingestion.class in the directory of itcdownloader.
-4. Copy settings file.  
+4. Copy properties file.  
+```
+cp autoingestion.properties.sample autoingestion.properties
+```
+5. Edit autoingestion.properties and set userID and password.
+6. Copy settings file.  
 ```
 cp settings.sh.sample settings.sh
 ```
-5. Edit settings.sh and set VENDOR_ID and OUTPUT_DIR.
+7. Edit settings.sh and set VENDOR_ID and OUTPUT_DIR.
 
 Usage
 -----
