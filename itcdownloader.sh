@@ -41,6 +41,8 @@ fi
 
 FILE_PRE=${FILE_PRE_R}${FILE_PRE_D}
 
+cd $DIR
+
 # Make output directory
 if [ ! -d $OUTPUT_DIR ]; then
   mkdir $OUTPUT_DIR
@@ -64,7 +66,7 @@ do
   fi
 
   # Download with Autoingestion
-  RESULT=`$JAVA -cp $DIR Autoingestion ${DIR}/autoingestion.properties $VENDOR_ID $R_TYPE $D_TYPE $R_S_TYPE $DATE`
+  RESULT=`$JAVA Autoingestion autoingestion.properties $VENDOR_ID $R_TYPE $D_TYPE $R_S_TYPE $DATE`
 
   # If succeeded
   if echo $RESULT | $GREP $FILE > /dev/null; then
