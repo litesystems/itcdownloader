@@ -2,3 +2,5 @@
 *.tmp
 Autoingestion.class
 autoingestion.properties
+settings.sh
+reports/*
