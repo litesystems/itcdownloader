@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# iTunes Connect Settings
+VENDOR_ID=00000000
+R_TYPE=Sales
+D_TYPE=Daily
+R_S_TYPE=Summary
+
+# File Settings
+HOME=`dirname $0`
+OUTPUT_DIR=${HOME}/reports/
+
