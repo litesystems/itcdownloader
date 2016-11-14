@@ -13,29 +13,32 @@ OS=`uname`
 JAVA=java
 GREP=grep
 
+if [ -z $PROPERTIES ]; then
+  echo '$PROPERTIES is not set.'
+  exit 1
+fi
+
 if [ ! $VENDOR_ID -gt 0 ]; then
   echo '$VENDOR_ID is not set.'
   exit 1
 fi
 
-if [ $R_TYPE = 'Sales' ]; then
+if [ $REPORT_TYPE = 'Sales' ]; then
   FILE_PRE_R='S_'
 else
   echo 'Only sales report is supported.'
   exit 1
 fi
 
-if [ $D_TYPE = 'Daily' ]; then
-  FILE_PRE_D='D_'
-else
-  echo 'Only daily report is supported.'
+if [ $REPORT_SUB_TYPE != 'Summary' ]; then
+  echo 'Only summary report is supported.'
   exit 1
 fi
 
-if [ $R_S_TYPE = 'Summary' ]; then
-  :
+if [ $DATE_TYPE = 'Daily' ]; then
+  FILE_PRE_D='D_'
 else
-  echo 'Only summary report is supported.'
+  echo 'Only daily report is supported.'
   exit 1
 fi
 
@@ -66,7 +69,7 @@ do
   fi
 
   # Download with Autoingestion
-  RESULT=`$JAVA Autoingestion autoingestion.properties $VENDOR_ID $R_TYPE $D_TYPE $R_S_TYPE $DATE`
+  RESULT=`$JAVA -jar Reporter.jar p=$PROPERTIES Sales.getReport $VENDOR_ID, $REPORT_TYPE, $REPORT_SUB_TYPE, $DATE_TYPE, $DATE`
 
   # If succeeded
   if echo $RESULT | $GREP $FILE > /dev/null; then
