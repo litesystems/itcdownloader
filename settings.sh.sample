@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Reporter Settings
+PROPERTIES=Reporter.properties
+
 # iTunes Connect Settings
 VENDOR_ID=00000000
 R_TYPE=Sales
